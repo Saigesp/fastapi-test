@@ -4,3 +4,4 @@ asyncpg==0.25.0
 databases==0.5.5
 greenlet==1.1.2
 SQLAlchemy==1.4.32
+Shapely==1.8.1.post1

@@ -1,5 +1,6 @@
 from.Migration import Migration
-from .CsvInsertMigration import CsvInsertMigration
+from .CsvMigration import CsvMigration
+from .CsvGeometryMigration import CsvGeometryMigration
 
 async def run_migrations(db):
     await Migration(
@@ -29,9 +30,29 @@ async def run_migrations(db):
         ),
     ).migrate()
 
-    await CsvInsertMigration(
+    await CsvMigration(
         db=db,
         name="0002",
         file="data/paystats.csv",
         table="paystats",
+    ).migrate()
+
+    await Migration(
+        db=db,
+        name="0003",
+        query=(
+            "CREATE TABLE postal_codes ("
+                "id INTEGER PRIMARY KEY"
+                ", the_geom GEOMETRY"
+                ", code INTEGER"
+            ")"
+        ),
+    ).migrate()
+
+    await CsvGeometryMigration(
+        db=db,
+        name="0004",
+        file="data/postal_codes.csv",
+        table="postal_codes",
+        geometry_field="the_geom",
     ).migrate()

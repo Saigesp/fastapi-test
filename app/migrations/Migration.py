@@ -1,4 +1,8 @@
 class Migration:
+    """
+    Migration class to handle raw sql queries
+    """
+
     def __init__(
         self,
         *,
