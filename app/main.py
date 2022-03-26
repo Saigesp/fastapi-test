@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.db import database
-from app.migrations import check_migrations
+from app.migrations import run_migrations
 
 
 app = FastAPI()
@@ -16,7 +16,7 @@ async def startup():
     if not database.is_connected:
         await database.connect()
 
-    await check_migrations(database)
+    await run_migrations(database)
 
 
 @app.on_event("shutdown")
