@@ -10,7 +10,7 @@ Clone the repository and install Docker and Docker-compose (if needed).
 
 ## Run
 
-In the root folder, run:
+(Linux) In the root folder, run:
 
 ```sh
 $ docker-compose up --build
