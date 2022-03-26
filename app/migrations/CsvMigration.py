@@ -35,11 +35,17 @@ class CsvMigration(Migration):
         )
 
     def get_query_from_csv(self):
-        with open(self.file, 'r') as csvfile:
+        with open(self.file, "r") as csvfile:
             values = [self.set_row_types(row) for row in csv.DictReader(csvfile)]
             headers = values[0].keys()
             columns = map((lambda x: f":{x}"), headers)
-            query = f"INSERT INTO {self.table} (" + ", ".join(headers) + ") VALUES (" + ", ".join(columns) + ")"
+            query = (
+                f"INSERT INTO {self.table} ("
+                + ", ".join(headers)
+                + ") VALUES ("
+                + ", ".join(columns)
+                + ")"
+            )
 
         return query, values
 
@@ -49,8 +55,8 @@ class CsvMigration(Migration):
     def set_value_type(self, key: str, value: str):
         if str(value).isdigit():
             return int(value)
-        if str(value).replace('.', '', 1).isdigit():
+        if str(value).lstrip("-").replace(".", "", 1).isdigit():
             return float(value)
-        if re.search(r'\d{4}-\d{2}-\d{2}', value):
-            return datetime.strptime(value, '%Y-%m-%d')
+        if re.search(r"\d{4}-\d{2}-\d{2}", value):
+            return datetime.strptime(value, "%Y-%m-%d")
         return value

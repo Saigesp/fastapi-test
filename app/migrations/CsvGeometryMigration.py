@@ -11,6 +11,7 @@ class CsvGeometryMigration(CsvMigration):
     - The geometry field must be WKB data type (Future improvements: handle
       more types)
     """
+
     def __init__(
         self,
         *,
@@ -37,5 +38,5 @@ class CsvGeometryMigration(CsvMigration):
         if key == self.geometry_field:
             geometry = wkb.loads(value, hex=True)
             return f"SRID={self.srid};{geometry.wkt}"
-        
+
         return super().set_value_type(key, value)

@@ -1,6 +1,7 @@
-from.Migration import Migration
+from .Migration import Migration
 from .CsvMigration import CsvMigration
 from .CsvGeometryMigration import CsvGeometryMigration
+
 
 async def run_migrations(db):
     await Migration(
