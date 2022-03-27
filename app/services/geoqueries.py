@@ -4,4 +4,11 @@ def get_parsed_bounds(bounds: str):
     :param bounds: NE-SW lng-lat bounds separated by commas
     :return: bounds as list of floats
     """
-    return [float(b) for b in bounds.split(",")]
+    lngNE, latNE, lngSW, latSW = [float(b) for b in bounds.split(",")]
+
+    return {
+        "lngNE": lngNE,
+        "latNE": latNE,
+        "lngSW": lngSW,
+        "latSW": latSW,
+    }
