@@ -2,7 +2,7 @@ from unittest import IsolatedAsyncioTestCase
 from app.db import database
 
 
-class AsyncioDBtestCase(IsolatedAsyncioTestCase):
+class AsyncioDBTestCase(IsolatedAsyncioTestCase):
     """
     Class to execute tests that touch the database
     """

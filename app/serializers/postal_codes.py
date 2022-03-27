@@ -2,6 +2,13 @@ import json
 
 
 class PostalCodesOutputSerializer:
+    """
+    Serialize postal_codes table entities:
+        - Transform geometry field: str -> dict
+
+    # TODO: Move total_turnover inside geometry.properties
+    """
+
     def __init__(self, data):
         self.data = self.get_serialized_data(data)
 

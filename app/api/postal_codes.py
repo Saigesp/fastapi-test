@@ -13,9 +13,6 @@ async def get_postal_codes(bounds: str = ""):
     bounds = get_parsed_bounds(bounds)
     data = await get_postal_codes_from_bounds(bounds)
 
-    # TODO: Get turnover data from db
-    # TODO: Serialize turnover data data from db
-
     return {
         "bounds": bounds,
         "results": PostalCodesOutputSerializer(data).data,

@@ -1,9 +1,9 @@
-from app.tests import AsyncioDBtestCase
+from app.tests import AsyncioDBTestCase
 
 from app.selectors.postal_codes import get_postal_codes_from_bounds
 
 
-class PostalCodesSelectorTest(AsyncioDBtestCase):
+class PostalCodesSelectorTest(AsyncioDBTestCase):
     async def test_postal_codes_filters_by_bounds(self):
         """
         get_postal_codes_from_bounds() returns only one result

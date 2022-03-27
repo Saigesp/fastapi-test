@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 
 
-def validate_bounds(bounds: str):
+def validate_bounds(bounds: str) -> bool:
     """
     Check that 'bounds' queryparam has correct format
 
@@ -38,6 +38,31 @@ def validate_bounds(bounds: str):
     if not all(
         [str(c).lstrip("-").replace(".", "", 1).isdigit() for c in bounds.split(",")]
     ):
+        raise format_error
+
+    return True
+
+
+def validate_postal_code_id(postal_code_id: int) -> bool:
+    """
+    Check that 'postal_code_id' queryparam is correct
+
+    :param postal_code_id: interger
+    :return: True if validation succeded
+    :raises HTTPException: postal_code_id not provided or incorrect
+    """
+    format_error = HTTPException(
+        status_code=400,
+        detail=(
+            "Error: Incorrect 'postal_code_id' format. "
+            "Expected integer greater than 0."
+        ),
+    )
+
+    if not isinstance(postal_code_id, int):
+        raise format_error
+
+    if postal_code_id <= 0:
         raise format_error
 
     return True

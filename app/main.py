@@ -5,7 +5,7 @@ from app.api import (
     get_root,
     get_postal_codes,
     get_paystats_by_age_gender,
-    get_paystats_by_time,
+    get_paystats_by_time_gender,
 )
 
 
@@ -40,6 +40,6 @@ async def paystats_age_gender(postal_code_id: int):
     return await get_paystats_by_age_gender(postal_code_id)
 
 
-@app.get("/v1/paystats/time-series/{postal_code_id}")
-async def get_paystats_time(postal_code_id: int):
-    return await get_paystats_by_time(postal_code_id)
+@app.get("/v1/paystats/time-gender/{postal_code_id}")
+async def paystats_time_gender(postal_code_id: int):
+    return await get_paystats_by_time_gender(postal_code_id)
