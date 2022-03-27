@@ -57,3 +57,24 @@ async def run_migrations(db):
         table="postal_codes",
         geometry_field="the_geom",
     ).migrate()
+
+    await Migration(
+        db=db,
+        name="0005",
+        query=(
+            "CREATE TABLE users ("
+                "id SERIAL PRIMARY KEY"
+                ", username VARCHAR(100) NOT NULL UNIQUE"
+                ", password VARCHAR(100) NOT NULL"
+            ")"
+        ),
+    ).migrate()
+
+    await Migration(
+        db=db,
+        name="0006",
+        query=(
+            "INSERT INTO users (username, password) "
+            "VALUES ('test', 'test')"  # TODO: Encrypt
+        ),
+    ).migrate()

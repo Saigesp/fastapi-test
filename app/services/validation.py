@@ -68,6 +68,7 @@ def validate_postal_code_id(postal_code_id: int) -> bool:
 
     return True
 
+
 def validate_postal_code_prefix(prefix: str) -> bool:
     """
     Check that 'postal_code_prefix' queryparam is correct

@@ -17,7 +17,18 @@ $ docker-compose up --build
 ```
 > If the database is empty it will be migrated and populated with data from `data` folder
 
-Once builded, you can navigate to http://localhost:8000 and another endpoints
+Once builded, you can navigate to http://localhost:8000 and other endpoints.
+
+### Auth
+
+A basic HTTP auth is enabled. The application expects a header that contains a username and a password, and if it doesn't receive it, it returns an HTTP 401 "Unauthorized" error.
+
+When you try to open the URL for the first time the browser will ask you for your username and password. The credentials are:
+
+```
+username: test
+password: test
+```
 
 ### Endpoints
 
