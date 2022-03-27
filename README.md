@@ -21,3 +21,11 @@ $ docker-compose up --build
 ### Endpoints
 
 FastAPI generates an automatic interactive API documentation with **Swagger** (http://127.0.0.1:8000/docs) and **ReDoc** (http://127.0.0.1:8000/redoc)
+
+## Tests
+
+Some tests have been programmed, which can be executed with the following command (it is necessary to have the project running):
+
+```sh
+sudo docker-compose exec web bash -c "python -m unittest discover"
+```
