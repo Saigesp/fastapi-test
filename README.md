@@ -17,7 +17,7 @@ $ docker-compose up --build
 ```
 > If the database is empty it will be migrated and populated with data from `data` folder
 
-Once builded, you can navigate to http://localhost:8000 and other endpoints.
+Once built, you can navigate to http://localhost:8000 and other endpoints.
 
 ### Auth
 
