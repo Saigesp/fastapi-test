@@ -17,3 +17,5 @@ class PostalCodesSelectorTest(AsyncioDBtestCase):
         }
         results = await get_postal_codes_from_bounds(opanel_coords)
         self.assertEqual(len(results), 1)
+        self.assertTrue(results[0].get("geometry"))
+        self.assertEqual(results[0].get("total_turnover"), 13195094.0)
