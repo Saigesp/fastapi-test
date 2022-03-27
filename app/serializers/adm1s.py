@@ -1,9 +1,9 @@
 import json
 
 
-class PostalCodesOutputSerializer:
+class Adm1OutputSerializer:
     """
-    Serialize postal_codes table entities:
+    Serialize adm1 aggregated entities (joined postal_codes):
         - Transform geometry field: str -> dict
 
     # TODO: Move total_turnover inside geometry.properties?
@@ -13,7 +13,7 @@ class PostalCodesOutputSerializer:
         self.data = self.get_serialized_data(data)
 
     def get_serialized_data(self, data):
-        return PostalCodesOutputSerializer.serialize(data)
+        return Adm1OutputSerializer.serialize(data)
 
     @staticmethod
     def serialize(data):
